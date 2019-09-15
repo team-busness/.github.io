@@ -12,6 +12,9 @@ import ClassState from './components//class-Stateless/'
 import Comwtym from './components/comwtym'
 import Comwtym2 from './components/comwtym2'
 import Comzjfl from './components/comzjfl'
+import Notebook from './components/notebook/index'
+import Xuanran from './components/notebook/tiaojianxuanran'
+import Shijian from './components/notebook/shijianchuli'
 import Reactdfzhqy from './components/Reactdfzhqy'
 export default class inde extends Component {
   constructor() {
@@ -42,6 +45,15 @@ export default class inde extends Component {
     switch (this.state.isCom) {
       case 'reactBase':
         Dom = <ReactBase />
+        break
+        case 'Notebook':
+        Dom = <Notebook />
+        break
+        case 'Shijian':
+        Dom = <Shijian />
+        break
+        case 'Xuanran':
+        Dom = <Xuanran />
         break
       case 'ComponentType':
         Dom = <TopApi />

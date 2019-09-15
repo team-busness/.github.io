@@ -15,7 +15,11 @@ const MenuData = [
   { content: 'class和无状态组件', type: 'video-camera', hash: 'ClassState' },
   { content: '搭建和配置', type: 'video-camera', hash: 'Comwtym' },
   { content: '渲染组件', type: 'video-camera', hash: 'Comwtym2' },
-  { content: '组件分类', type: 'video-camera', hash: 'Comzjfl' }
+  { content: '组件分类', type: 'video-camera', hash: 'Comzjfl' },
+  { content: '受控组件和非受控组件', type: 'video-camera', hash: 'Notebook' },
+  { content: '条件渲染', type: 'video-camera', hash: 'Xuanran' },
+  { content: '事件处理', type: 'video-camera', hash: 'Shijian' }
+  
 ]
 export default class Index extends Component {
   constructor() {
