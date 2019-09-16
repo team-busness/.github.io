@@ -5,13 +5,14 @@ export default class index extends Component {
     super()
     this.state = {
       radio: '',
-      checkbox: [false, true, false]
+      checkbox: [false, true, false],
+      texta: ''
     }
   }
   //单选
   handleChange = ({ target }) => {
-    // console.log(target.name)
-    // console.log(target.value)
+    console.log(target.name)
+    console.log(target.value)
     this.setState({
       [target.name]: target.value
     })
@@ -31,13 +32,20 @@ export default class index extends Component {
       })
     }
   }
+  // 改变value值时
+  onChange = ({ target }) => {
+    console.log(target.value)
+    this.setState({
+      texta: target.value
+    })
+  }
   render() {
-    const { radio, checkbox } = this.state
+    const { radio, checkbox, texta } = this.state
     return (
       <form className="form-back">
         <div className="div-pt">**市场调查问卷</div>
         <div className="div-back-9">1.你目前的主要投资理财途径?</div>
-        <label htmlFor="">
+        <label>
           <input
             type="radio"
             name="radio"
@@ -47,7 +55,7 @@ export default class index extends Component {
           />
           没有看法
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="radio"
             name="radio"
@@ -57,7 +65,7 @@ export default class index extends Component {
           />
           我认为996应该近早废弃
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="radio"
             name="radio"
@@ -71,7 +79,7 @@ export default class index extends Component {
         <div className="div-back"></div>
 
         <div className="div-back-9">10.你有那些爱好?</div>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -81,7 +89,7 @@ export default class index extends Component {
           />
           一天吃五次主食
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -91,7 +99,7 @@ export default class index extends Component {
           />
           吃完主食还要喝可乐
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -101,7 +109,7 @@ export default class index extends Component {
           />
           吃完主食还要喝可乐还要吃半斤零食
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -111,7 +119,7 @@ export default class index extends Component {
           />
           吃完上面多食物还要打开朋友圈发一条减肥多口令
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -121,7 +129,7 @@ export default class index extends Component {
           />
           素食主
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -131,7 +139,7 @@ export default class index extends Component {
           />
           热爱运动
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -141,7 +149,7 @@ export default class index extends Component {
           />
           喜欢古典音乐
         </label>
-        <label htmlFor="">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
@@ -153,11 +161,15 @@ export default class index extends Component {
         </label>
         <div className="div-back"></div>
         <div>你认为当代年轻人应该持有怎样的世界观、价值观、人生观</div>
-        <textarea className="text-back"></textarea>
+        <textarea
+          className="text-back"
+          value={texta}
+          onChange={this.onChange}
+        ></textarea>
         <div className="div-back"></div>
-        <label htmlFor="">
+        <label>
           <button type="button" className="but-back">
-            确认提交 >
+            确认提交
           </button>
         </label>
       </form>
