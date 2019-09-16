@@ -28,32 +28,26 @@ export default class Login extends Component {
       return alert('密码不能为空')
     }
     // 2.走接口
-    axios
-      .get('/api/register.json', {
-        username,
-        password
-      })
-      .then(res => {
-        // 3.本地测试：前端需要做后端的逻辑对比，一般后端来做判断
-        // 假设：这里的数据就是接口获取的
-        const login = { username, password }
-        // 假设这里的数据就是从数据库读出来的
-        const userInfo = this.userInfo
-        // 使用的接口的数据与数据库的数据对比，如果一致，说明登陆成功
-        if (!username) {
-          return alert('该账号不存在，请立即注册')
-        } else if (userInfo.username != login.username) {
-          console.log(userInfo.username)
-          console.log(login.username)
-          return alert('用户名不对')
-        } else if (userInfo.password != login.password) {
-          return alert('密码错误')
-        }
-        // console.log(res.data)
-        this.props.getstatus({ ...res.data, typename: 'home' })
-        // getstatus() // 跳转页面
-        return console.log('提交')
-      })
+
+    // 3.本地测试：前端需要做后端的逻辑对比，一般后端来做判断
+    // 假设：这里的数据就是接口获取的
+    const login = { username, password }
+    // 假设这里的数据就是从数据库读出来的
+    const userInfo = this.userInfo
+    // 使用的接口的数据与数据库的数据对比，如果一致，说明登陆成功
+    if (!username) {
+      return alert('该账号不存在，请立即注册')
+    } else if (userInfo.username != login.username) {
+      console.log(userInfo.username)
+      console.log(login.username)
+      return alert('用户名不对')
+    } else if (userInfo.password != login.password) {
+      return alert('密码错误')
+    }
+    // console.log(res.data)
+    this.props.getstatus({ typename: 'home' })
+    // getstatus() // 跳转页面
+    return console.log('提交')
   }
 
   // 渲染函数

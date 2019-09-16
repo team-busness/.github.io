@@ -1,6 +1,5 @@
 // 注册部分
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Button } from 'antd'
 // 为重置使用保存的全局数据
 const myState = {
@@ -41,21 +40,18 @@ export default class index extends Component {
     }
     // 2.调用接口，接口返回的数据存到全局里面
     // 凡是涉及用户数据信息的，在接口一定使用post请求方式
-    axios.get('/api/register.json', {}).then(res => {
-      console.log(res)
-      if (res.status === 200) {
+
+
         // 将账户密码存到本地一份【注意：在真实的项目里，不能这样做，仅适用于测试本地开发】
         sessionStorage.setItem(
           'userRegister',
           JSON.stringify({ username, password })
         )
         // 3.控制跳转到登陆页面
-        console.log(res.data)
-        this.props.getstatus({ ...res.data, typename: 'login' })
-      } else {
-        alert('网络错误，请检查！~')
-      }
-    })
+
+        this.props.getstatus({typename: 'login' })
+
+
   }
 
   // 注册过的用户进入登录页
