@@ -78,7 +78,7 @@ export default class index extends Component {
 
         <div className="div-back"></div>
 
-        <div className="div-back-9">10.你有那些爱好?</div>
+        <div className="div-back-9">2.你有那些爱好?</div>
         <label>
           <input
             type="checkbox"
@@ -160,7 +160,7 @@ export default class index extends Component {
           喜欢看书，偶尔写写字
         </label>
         <div className="div-back"></div>
-        <div>你认为当代年轻人应该持有怎样的世界观、价值观、人生观</div>
+        <div>3.你认为当代年轻人应该持有怎样的世界观、价值观、人生观</div>
         <textarea
           className="text-back"
           value={texta}
