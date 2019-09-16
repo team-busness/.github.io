@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 // 登陆
+import { Button } from 'antd'
+// import Home from './home.jsx'
 export default class Login extends Component {
   constructor() {
     super()
@@ -47,39 +49,54 @@ export default class Login extends Component {
         } else if (userInfo.password != login.password) {
           return alert('密码错误')
         }
+        // console.log(res.data)
+        this.props.getstatus({ ...res.data, typename: 'home' })
+        // getstatus() // 跳转页面
         return console.log('提交')
       })
   }
 
   // 渲染函数
   render() {
-    const { username, password } = this.state
+    const { username, password, getstatus } = this.state
+
     return (
-      <form>
-        <label>
-          <input
-            type="text"
-            placeholder="用户名"
-            value={username}
-            onChange={this.handleChange}
-            name="username"
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            placeholder="密码"
-            value={password}
-            onChange={this.handleChange}
-            name="password"
-          />
-        </label>
-        <label>
-          <button type="button" onClick={this.onSubmit}>
-            登陆
-          </button>
-        </label>
-      </form>
+      <div className="login">
+        <h1>登录</h1>
+        <form className="form">
+          <label>
+            用户名：
+            <input
+              type="text"
+              placeholder="用户名"
+              value={username}
+              onChange={this.handleChange}
+              name="username"
+            />
+          </label>
+          <label>
+            密码框：
+            <input
+              type="password"
+              placeholder="密码"
+              value={password}
+              onChange={this.handleChange}
+              name="password"
+            />
+          </label>
+          <label className="btn">
+            <Button type="primary" onClick={this.onSubmit}>
+              登陆
+            </Button>
+            <a
+              href="#"
+              onClick={() => this.props.getstatus({ typename: 'register' })}
+            >
+              注册一个
+            </a>
+          </label>
+        </form>
+      </div>
     )
   }
 }

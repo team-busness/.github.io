@@ -6,6 +6,7 @@ import Login from './login'
 import Register from './register'
 // 引入首页
 import Home from './home'
+
 export default class Index extends Component {
   constructor() {
     super()
@@ -28,7 +29,7 @@ export default class Index extends Component {
         Dom = <Register getstatus={this.getstatus} />
         break
       case 'login':
-        Dom = <Login />
+        Dom = <Login getstatus={this.getstatus} />
         break
       case 'home':
         Dom = <Home />

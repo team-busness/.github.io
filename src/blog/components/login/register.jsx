@@ -1,24 +1,18 @@
-// 受控组件
+// 注册部分
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Button } from 'antd'
 // 为重置使用保存的全局数据
 const myState = {
   username: '',
   password: '',
   radio: '1'
 }
+
 export default class index extends Component {
   // 表单的提交事件
   handleSubmit = e => {
-    const { target } = e
     e.preventDefault() //取消默认事件
-    // console.log('表单的提交事件')
-    // console.log(target.querySelectorAll('input[name=text]')[0].value)
-  }
-  // 重置表单事件
-  reSetForm = () => {
-    // console.log('重置表单')
-    this.setState(myState)
   }
 
   // 改变state里的值
@@ -33,8 +27,7 @@ export default class index extends Component {
     super()
     this.state = {
       username: '',
-      password: '',
-      radio: '1'
+      password: ''
     }
   }
   //注册
@@ -64,62 +57,53 @@ export default class index extends Component {
       }
     })
   }
+
+  // 注册过的用户进入登录页
+  toLogin = () => {
+    this.props.getstatus({ typename: 'login' })
+  }
+
   // 渲染函数
   render() {
-    const { username, password, radio } = this.state
+    const { username, password } = this.state
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        onReset={this.reSetForm}
-        autoComplete="off"
-      >
-        <label>
-          用户名:
-          <input
-            type="text"
-            value={username}
-            onChange={this.handleChange}
-            name="username"
-          />
-        </label>
-        <label>
-          密码框:
-          <input
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            name="password"
-          />
-        </label>
+      <div className="register">
+        <h1>注册</h1>
+        <form
+          onSubmit={this.handleSubmit}
+          onReset={this.reSetForm}
+          autoComplete="off"
+          className="form"
+        >
+          <label>
+            用户名:
+            <input
+              type="text"
+              value={username}
+              onChange={this.handleChange}
+              name="username"
+            />
+          </label>
+          <label>
+            密码框:
+            <input
+              type="password"
+              value={password}
+              onChange={this.handleChange}
+              name="password"
+            />
+          </label>
 
-        <label>
-          单选框：
-          <input
-            type="radio"
-            name="radio"
-            checked={radio == '0'}
-            value="0"
-            onChange={this.handleChange}
-          />
-          <input
-            type="radio"
-            name="radio"
-            checked={radio == '1'}
-            value="1"
-            onChange={this.handleChange}
-          />
-        </label>
-
-        <label>
-          <button type="button" onClick={this.register}>
-            注册提交
-          </button>
-          <button type="submit" style={{ display: 'none' }}>
-            登陆提交
-          </button>
-          <button type="reset">重置</button>
-        </label>
-      </form>
+          <label className="btn">
+            <Button type="primary" onClick={this.register}>
+              注册提交
+            </Button>
+            <a href="#" onClick={this.toLogin} >
+              登录
+            </a>
+          </label>
+        </form>
+      </div>
     )
   }
 }
